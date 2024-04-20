@@ -8,6 +8,15 @@ const connection = mysql.createConnection({
     password: '24004486'
 });
 
+try {
+    connection.query('SHOW TABLES', (err, results) => {
+        if(err) throw err;
+        console.log(results);
+    });
+} catch (err) {
+    console.log(err);
+}
+
 let createRandomUser = () => {
     return {
         id: faker.string.uuid(),
@@ -16,5 +25,3 @@ let createRandomUser = () => {
         password: faker.internet.password(),    
     };
 }
-
-console.log(createRandomUser());
