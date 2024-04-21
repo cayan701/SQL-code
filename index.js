@@ -17,6 +17,8 @@ try {
     console.log(err);
 }
 
+connection.end();
+
 let createRandomUser = () => {
     return {
         id: faker.string.uuid(),
