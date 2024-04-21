@@ -14,6 +14,10 @@ try {
     connection.query(q, (err, results) => {
         if(err) throw err;
         console.log(results);
+        console.log(results.length);
+        console.log(results[0]);
+        console.log(results[1]);
+
     });
 } catch (err) {
     console.log(err);
