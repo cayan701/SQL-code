@@ -1,6 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
 
+
+// create a connection to database
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -8,20 +10,21 @@ const connection = mysql.createConnection({
     password: '24004486'
 });
 
-let q = "SHOW TABLES";
+let q = "INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)";
 
+
+
+// simple query
 try {
     connection.query(q, (err, results) => {
         if(err) throw err;
         console.log(results);
-        console.log(results.length);
-        console.log(results[0]);
-        console.log(results[1]);
-
     });
 } catch (err) {
     console.log(err);
 }
+
+// closing the connection
 
 connection.end();
 
