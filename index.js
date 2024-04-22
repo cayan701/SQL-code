@@ -23,19 +23,19 @@ let q = "INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)";
 
 let data = [];
 for (let i=1; i<=100; i++) {
-    console.log(createRandomUser());
+    data.push(createRandomUser());
 }
 
 
 // simple query
-// try {
-//     connection.query(q, (err, results) => {
-//         if(err) throw err;
-//         console.log(results);
-//     });
-// } catch (err) {
-//     console.log(err);
-// }
+try {
+    connection.query(q, [data], (err, results) => {
+        if(err) throw err;
+        console.log(results);
+    });
+} catch (err) {
+    console.log(err);
+}
 
 // closing the connection
 
