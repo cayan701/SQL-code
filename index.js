@@ -10,29 +10,35 @@ const connection = mysql.createConnection({
     password: '24004486'
 });
 
+let createRandomUser = () => {
+    return [
+        faker.string.uuid(),
+        faker.internet.userName(),
+        faker.internet.email(),
+        faker.internet.password(),    
+    ];
+}
+
 let q = "INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)";
 
+let data = [];
+for (let i=1; i<=100; i++) {
+    console.log(createRandomUser());
+}
 
 
 // simple query
-try {
-    connection.query(q, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-    });
-} catch (err) {
-    console.log(err);
-}
+// try {
+//     connection.query(q, (err, results) => {
+//         if(err) throw err;
+//         console.log(results);
+//     });
+// } catch (err) {
+//     console.log(err);
+// }
 
 // closing the connection
 
 connection.end();
 
-let createRandomUser = () => {
-    return {
-        id: faker.string.uuid(),
-        username: faker.internet.userName(),
-        email: faker.internet.email(),
-        password: faker.internet.password(),    
-    };
-}
+
