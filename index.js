@@ -1,6 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
-
+const express = require('express');
+const app = express();
+const port = 3000;
 
 // create a connection to database
 const connection = mysql.createConnection({
@@ -41,4 +43,7 @@ try {
 
 connection.end();
 
+app.listen(port, () => {
+    console.log(`App is listening on ${port}`);
+})
 
