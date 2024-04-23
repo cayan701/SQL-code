@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
         connection.query(q, (err, results) => {
             if(err) throw err;
             console.log(results[0]["count(*)"]);
-            res.send(results);
+            res.render('home.ejs');
         });
     } catch (err) {
         console.log(err);
