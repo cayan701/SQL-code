@@ -19,7 +19,7 @@ let createRandomUser = () => {
     ];
 }
 
-let q = "INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)";
+let q = "INSERT INTO user (id, username, email, password) VALUES ?";
 
 let data = [];
 for (let i=1; i<=100; i++) {
