@@ -40,8 +40,11 @@ try {
 }
 
 // closing the connection
-
 connection.end();
+
+app.get('/', (req, res) => {
+    console.log('Welcome to homepage!');
+})
 
 app.listen(port, () => {
     console.log(`App is listening on ${port}`);
