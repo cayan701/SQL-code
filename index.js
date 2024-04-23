@@ -3,6 +3,10 @@ const mysql = require('mysql2');
 const express = require('express');
 const app = express();
 const port = 3000;
+const path = require("path");
+
+app.set('view engine', 'ejs');
+app.use('views', path.join(__dirname, "/views"));
 
 // create a connection to database
 const connection = mysql.createConnection({
@@ -29,7 +33,7 @@ app.get('/', (req, res) => {
     try {
         connection.query(q, (err, results) => {
             if(err) throw err;
-            console.log(results);
+            console.log(results[0]["count(*)"]);
             res.send(results);
         });
     } catch (err) {
