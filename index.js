@@ -22,16 +22,16 @@ let createRandomUser = () => {
 }
 
 // closing the connection
-connection.end();
+// connection.end();
 
 app.get('/', (req, res) => {
     let q = `SELECT count(*) FROM user`;
     try {
-    connection.query(q, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send(results);
-    });
+        connection.query(q, (err, results) => {
+            if(err) throw err;
+            console.log(results);
+            res.send(results);
+        });
     } catch (err) {
         console.log(err);
         res.send('error in DB');
