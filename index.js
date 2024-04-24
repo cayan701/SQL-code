@@ -6,7 +6,7 @@ const port = 3000;
 const path = require("path");
 
 app.set('view engine', 'ejs');
-app.use('views', path.join(__dirname, "/views"));
+app.set('views', path.join(__dirname, "/views"));
 
 // create a connection to database
 const connection = mysql.createConnection({
@@ -33,8 +33,8 @@ app.get('/', (req, res) => {
     try {
         connection.query(q, (err, results) => {
             if(err) throw err;
-            console.log(results[0]["count(*)"]);
-            res.render('home.ejs');
+            let count = results[0]["count(*)"];
+            res.render('home.ejs', { count });  
         });
     } catch (err) {
         console.log(err);
@@ -45,4 +45,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`App is listening on ${port}`);
 })
-
