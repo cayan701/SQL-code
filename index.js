@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
     }
 })
 
-app.get('users', (req, res) => {
+app.get('/users', (req, res) => {
     let q = `SELECT * FROM user`;
     try {
         connection.query(q, (err, results) => {
