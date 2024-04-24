@@ -42,6 +42,20 @@ app.get('/', (req, res) => {
     }
 })
 
+app.get('users', (req, res) => {
+    let q = `SELECT * FROM user`;
+    try {
+        connection.query(q, (err, results) => {
+            if(err) throw err;
+            console.log(results);
+            res.send(results);  
+        });
+    } catch (err) {
+        console.log(err);
+        res.send('error in DB');
+    }
+})
+
 app.listen(port, () => {
     console.log(`App is listening on ${port}`);
 })
