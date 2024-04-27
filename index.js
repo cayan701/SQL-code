@@ -48,7 +48,7 @@ app.get('/users', (req, res) => {
         connection.query(q, (err, results) => {
             if(err) throw err;
             console.log(results);
-            res.send(results);  
+            res.render('showusers.ejs');  
         });
     } catch (err) {
         console.log(err);
