@@ -45,15 +45,21 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res) => {
     let q = `SELECT * FROM user`;
     try {
-        connection.query(q, (err, results) => {
+        connection.query(q, (err, users) => {
             if(err) throw err;
             //console.log(results);
-            res.render('showusers.ejs');  
+            res.render('showusers.ejs', { users });  
         });
     } catch (err) {
         console.log(err);
         res.send('error in DB');
     }
+})
+
+// Edit route
+
+app.get('/user/:id/edit', (req, res) => {
+    res.render('edit.ejs');
 })
 
 app.listen(port, () => {

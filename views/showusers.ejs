@@ -18,11 +18,19 @@
             <th>username</th>
             <th>email</th>
         </tr>
-        <tr>
-            <th>123</th>
-            <th>123user</th>
-            <th>123@gmail.com</th>
-        </tr>
+        <% for (user of users) { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <form method="GET" action="/user/<%= user.id %>/edit">
+                        <button>Edit username</button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
     </table>
 </body>
 </html>
+
