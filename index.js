@@ -65,8 +65,8 @@ app.get('/user/:id/edit', (req, res) => {
     try {
         connection.query(q, (err, results) => {
             if (err) throw err;
-            console.log(results);
-            res.render("edit.ejs");
+            let user = results[0];
+            res.render("edit.ejs", { user });
         })
     } catch (error) {
         console.log(error);
