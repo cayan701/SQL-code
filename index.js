@@ -77,6 +77,8 @@ app.get('/user/:id/edit', (req, res) => {
     }
 })
 
+
+// update DB route
 app.patch('/user/:id', (req, res) => {
     let { id } = req.params;
     let q = `SELECT * FROM user WHERE id="${id}"`;
@@ -84,10 +86,12 @@ app.patch('/user/:id', (req, res) => {
     try {
         connection.query(q, (err, results) => {
             if (err) throw err;
-            
+            let user = results[0];
+            res.send(user);
         })
     } catch (error) {
-        
+        console.log(err);
+        res.send('error in DB');
     }
 })
 
