@@ -8,6 +8,8 @@ const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, "/views"));
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: true }));
 
 // create a connection to database
 const connection = mysql.createConnection({
@@ -43,7 +45,7 @@ app.get('/', (req, res) => {
     }
 })
 
-app.get('/users', (req, res) => {
+app.get('/user', (req, res) => {
     let q = `SELECT * FROM user`;
     try {
         connection.query(q, (err, users) => {
@@ -73,6 +75,10 @@ app.get('/user/:id/edit', (req, res) => {
         console.log(error);
         res.send('error in DB');
     }
+})
+
+app.patch('/user/:id', (req, res) => {
+    res.send('updated');
 })
 
 app.listen(port, () => {
