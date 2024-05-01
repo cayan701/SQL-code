@@ -78,7 +78,17 @@ app.get('/user/:id/edit', (req, res) => {
 })
 
 app.patch('/user/:id', (req, res) => {
-    res.send('updated');
+    let { id } = req.params;
+    let q = `SELECT * FROM user WHERE id="${id}"`;
+
+    try {
+        connection.query(q, (err, results) => {
+            if (err) throw err;
+            
+        })
+    } catch (error) {
+        
+    }
 })
 
 app.listen(port, () => {
