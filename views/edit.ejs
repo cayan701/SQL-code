@@ -8,5 +8,10 @@
 </head>
 <body>
     <h2>You are about to change the username: <%= user.email %></h2>
+    <form method="post" action="/">
+        <textarea name="username" id="" cols="30" rows="10"> <%= user.username %> </textarea>
+        <input type="password" name="password" placeholder="enter password">
+        <button>Edit</button>
+    </form>
 </body>
 </html>
