@@ -81,7 +81,7 @@ app.get('/user/:id/edit', (req, res) => {
 // update DB route
 app.patch('/user/:id', (req, res) => {
     let { id } = req.params;
-    let { password: formPass } = req.body;
+    let { password: formPass, username: newUsername } = req.body;
     let q = `SELECT * FROM user WHERE id="${id}"`;
 
     try {
