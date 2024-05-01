@@ -26,7 +26,7 @@ let createRandomUser = () => {
         faker.internet.email(),
         faker.internet.password(),    
     ];
-}
+};
 
 // closing the connection
 // connection.end();
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
         console.log(err);
         res.send('error in DB');
     }
-})
+});
 
 app.get('/user', (req, res) => {
     let q = `SELECT * FROM user`;
@@ -57,7 +57,7 @@ app.get('/user', (req, res) => {
         console.log(err);
         res.send('error in DB');
     }
-})
+});
 
 // Edit route
 
@@ -75,12 +75,13 @@ app.get('/user/:id/edit', (req, res) => {
         console.log(error);
         res.send('error in DB');
     }
-})
+});
 
 
 // update DB route
 app.patch('/user/:id', (req, res) => {
     let { id } = req.params;
+    let { password: formPass } = req.body;
     let q = `SELECT * FROM user WHERE id="${id}"`;
 
     try {
