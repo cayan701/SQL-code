@@ -94,7 +94,7 @@ app.patch('/user/:id', (req, res) => {
                 let q2 = `UPDATE user SET username "${newUsername}" where id="${id}"`;
                 connection.query(q2, (err, results) => {
                     if (err) throw err;
-                    res.send(results);
+                    res.redirect('/user');
                 })
             }
         })
