@@ -92,13 +92,14 @@ app.patch('/user/:id', (req, res) => {
             if(formPass != user.password) {
                 res.send('Wrong password');
             }
+
             res.send(user);
         })
     } catch (error) {
         console.log(err);
         res.send('error in DB');
     }
-})
+});
 
 app.listen(port, () => {
     console.log(`App is listening on ${port}`);
