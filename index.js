@@ -77,7 +77,6 @@ app.get('/user/:id/edit', (req, res) => {
     }
 });
 
-
 // update DB route
 app.patch('/user/:id', (req, res) => {
     let { id } = req.params;
