@@ -97,7 +97,7 @@ app.patch('/user/:id', (req, res) => {
                     res.redirect('/user');
                 })
             }
-        })
+        });
     } catch (error) {
         console.log(err);
         res.send('error in DB');
@@ -106,4 +106,4 @@ app.patch('/user/:id', (req, res) => {
 
 app.listen(port, () => {
     console.log(`App is listening on ${port}`);
-})
+});
